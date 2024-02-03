@@ -1,2 +1,2 @@
-# my-first-repo
-My first repository on GitHub
+# Web(front-end) програмування
+Репозиторій Магас Діани Андріївни
