@@ -1,0 +1,118 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+}
+
+
+
+.caption1 {
+    background-color: rgb(254, 187, 5);
+}
+
+.caption2 {
+    background-color: rgb(210, 8, 82);
+}
+
+.caption3 {
+    background-color: rgb(241, 117, 196);
+}
+
+.caption1,
+.caption2,
+.caption3 {
+    width: 40%;
+    height: 50px;
+    border: 1px solid green;
+    text-align: center;
+    padding: 0px 10px;
+}
+
+.text {
+    padding: 0px 10px;
+    height: 100%;
+}
+p {
+    font-size: 20px;
+}
+/* Desktop */
+@media (min-width: 993px) {
+    .row {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .container-1,
+    .container-2,
+    .container-3 {
+        display: flex;
+        background-color: rgba(130, 212, 107, 0.829);
+        border: 1px solid green;
+        width: 30%;
+        height: 250px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+/* Tablet */
+@media (min-width: 768px) and (max-width: 992px) {
+    .row {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .container-1,
+    .container-2 {
+        display: flex;
+        background-color: rgba(130, 212, 107, 0.829);
+        border: 1px solid green;
+        width: 46%;
+        height: 250px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .container-3 {
+        display: flex;
+        margin-top: 33px;
+        background-color: rgba(130, 212, 107, 0.829);
+        border: 1px solid green;
+        width: 96%;
+        height: 200px;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .row {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .container-1,
+    .container-2,
+    .container-3 {
+        display: flex;
+        background-color: rgba(130, 212, 107, 0.829);
+        border: 1px solid green;
+        width: 33,3%;
+        height: 250px;
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 15px 0px;
+    }
+    
+}
