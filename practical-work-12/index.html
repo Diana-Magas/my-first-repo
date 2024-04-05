@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практична робота №12</title>
+  </head>
+  <body>
+    <h1>Практична робота №12 Магас Діани Андріївни</h1>
+    <script src="script.js"></script>
+
+    <form action="/submit" method="post">
+      <label for="username">Ім'я користувача:</label>
+      <input type="text" id="username" name="username" /><br /><br />
+
+      <label for="email">Електронна пошта:</label>
+      <input type="email" id="email" name="email" /><br /><br />
+
+      <label>Час прийому:</label><br />
+      <input type="radio" id="breakfast" name="meal" value="сніданок" />
+      <label for="breakfast">Сніданок 🌅</label><br />
+      <input type="radio" id="lunch" name="meal" value="обід" />
+      <label for="lunch">Обід ☀️</label><br />
+      <input type="radio" id="dinner" name="meal" value="вечерю" />
+      <label for="dinner">Вечеря 🌙</label><br /><br />
+
+      <label>Страви:</label><br />
+      <input type="checkbox" id="borshch" name="dish" value="борщ" />
+      <label for="borshch">Борщ 🍲</label><br />
+
+      <input type="checkbox" id="porridge" name="dish" value="кашу" />
+      <label for="porridge">Вівсяна каша 🍛</label><br />
+
+      <input type="checkbox" id="pasta" name="dish" value="пасту" />
+      <label for="pasta">Паста Болоньєзе🍝</label><br />
+
+      <input type="checkbox" id="pizza" name="dish" value="піцу" />
+      <label for="pizza">Піца🍕</label><br />
+
+      <input type="checkbox" id="shashlik" name="dish" value="шашлик" />
+      <label for="shashlik">Шашлик 🍖</label><br />
+      <br />
+
+      <label for="comment">Коментар:</label><br />
+      <textarea id="comment" name="comment" rows="4" cols="50"></textarea
+      ><br /><br />
+
+      <button type="submit">Надіслати</button>
+    </form>
+
+    <div id="result"></div>
+  </body>
+</html>
