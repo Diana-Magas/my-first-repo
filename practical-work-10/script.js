@@ -1,4 +1,3 @@
-
 const SortLibrary = {
     bubbleSort: function(array, ascending = true) {
     },
@@ -32,3 +31,23 @@ const SortLibrary = {
     console.log(SortLibrary.insertionSort(array3, true));
     console.log(SortLibrary.insertionSort(array3));
 })(window);
+
+function generateRandomArray(length) {
+    let array = [];
+    for (let i = 0; i < length; i++) {
+        array.push(Math.floor(Math.random() * 1000));
+    }
+    return array;
+}
+
+let array = generateRandomArray(100);
+
+console.log("Original Array:", array);
+console.log("Bubble Sort (Ascending):", SortLibrary.bubbleSort([...array]));
+console.log("Bubble Sort (Descending):", SortLibrary.bubbleSort([...array], false));
+console.log("Selection Sort (Ascending):", SortLibrary.selectionSort([...array]));
+console.log("Selection Sort (Descending):", SortLibrary.selectionSort([...array], false));
+console.log("Insertion Sort (Ascending):", SortLibrary.insertionSort([...array]));
+console.log("Insertion Sort (Descending):", SortLibrary.insertionSort([...array], false));
+
+
