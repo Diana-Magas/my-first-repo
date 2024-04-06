@@ -102,7 +102,3 @@
     console.log(SortLibrary.insertionSort([...array]));
 })(window);
 
-
-    global.SortLibrary = SortLibrary;
-})(window);
-
