@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
     let score = 0;
     let timeLeft = 0;
     let timerInterval;
+    let movementInterval;
+    let playerSpeed = 1;
 
     startButton.addEventListener("click", function() {
         const difficultySelect = document.getElementById("difficulty");
@@ -39,12 +41,15 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("menu").style.display = "none";
         document.querySelector("h1").style.display = "none";
 
+        movementInterval = setInterval(movePlayer, 10);
+
         timerInterval = setInterval(function() {
             timeLeft--;
             timeDisplay.textContent = timeLeft;
 
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
+                clearInterval(movementInterval); 
                 startButton.disabled = false;
                 alert("Game Over! Your score: " + score + "\nCongratulations! Please reload the page to start a new game.");
                 gameDiv.style.display = "none"; 
@@ -62,23 +67,37 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
+    function movePlayer() {
+        let currentLeft = parseInt(player.style.left);
+        let currentTop = parseInt(player.style.top);
+
+        let newLeft = currentLeft + playerSpeed;
+        let newTop = currentTop + playerSpeed;
+
+        player.style.left = newLeft + "px";
+        player.style.top = newTop + "px";
+    }
+
     function resetPlayerPosition() {
         player.style.left = Math.random() * (window.innerWidth - 100) + "px";
         player.style.top = Math.random() * (window.innerHeight - 100) + "px";
+        playerSpeed += 0.5;
     }
 
     function getTimeForDifficulty(difficulty) {
         switch (difficulty) {
             case "Easy peasy lemon squeezy":
-                return 15; 
+                return 80;
             case "It's in the middle of the road":
-                return 10; 
+                return 30; 
             case "Like finding a needle.":
-                return 5;
+                return 15; 
             default:
-                return 15;
+                return 80; 
         }
     }
 });
+
+ 
 
 
