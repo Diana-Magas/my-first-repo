@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Практична робота № 13 Магас Діани Андріївни</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="menu">
+      <h1>Tap Missione</h1>
+      <label for="difficulty">Choose difficulty:</label>
+      <select name="difficulty" id="difficulty">
+        <option value="" selected disabled hidden>
+          --Please choose an option--
+        </option>
+        <option value="Easy peasy lemon squeezy">
+          Easy peasy lemon squeezy
+        </option>
+        <option value="It's in the middle of the road">
+          It's in the middle of the road
+        </option>
+        <option value="Like finding a needle.">Like finding a needle</option>
+      </select>
+      <label for="color">Choose color:</label>
+      <select name="color" id="color">
+        <option value="" selected disabled hidden>
+          --Please choose an option--
+        </option>
+        <option value="Blue">Blue</option>
+        <option value="Purple">Purple</option>
+        <option value="Green">Green</option>
+      </select>
+      <button id="start">Start</button>
+    </div>
+    <div id="game">
+      <div>
+        <label for="Score"> Score:</label>
+        <span name="Score" id="Score">0</span>
+      </div>
+      <div>
+        <label for="time">Time left for click:</label>
+        <span name="time" id="time"></span>
+      </div>
+    </div>
+
+    <div id="player"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
