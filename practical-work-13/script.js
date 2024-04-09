@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded", function() {
     function getTimeForDifficulty(difficulty) {
         switch (difficulty) {
             case "Easy peasy lemon squeezy":
-                return 150;
+                return 80;
             case "It's in the middle of the road":
-                return 100; 
+                return 40; 
             case "Like finding a needle.":
-                return 50; 
+                return 20; 
             default:
-                return 150; 
+                return 80; 
         }
     }
 });
