@@ -8,8 +8,6 @@ document.addEventListener("DOMContentLoaded", function() {
     let score = 0;
     let timeLeft = 0;
     let timerInterval;
-    let movementInterval;
-    let playerSpeed = 1; // Початкова швидкість руху квадрату
 
     startButton.addEventListener("click", function() {
         const difficultySelect = document.getElementById("difficulty");
@@ -41,16 +39,12 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById("menu").style.display = "none";
         document.querySelector("h1").style.display = "none";
 
-        // Починаємо рухати квадрат з поточною швидкістю
-        movementInterval = setInterval(movePlayer, 10);
-
         timerInterval = setInterval(function() {
             timeLeft--;
             timeDisplay.textContent = timeLeft;
 
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
-                clearInterval(movementInterval); // Зупиняємо рух квадрату
                 startButton.disabled = false;
                 alert("Game Over! Your score: " + score + "\nCongratulations! Please reload the page to start a new game.");
                 gameDiv.style.display = "none"; 
@@ -68,26 +62,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    function movePlayer() {
-        // Отримуємо поточні координати квадрату
-        let currentLeft = parseInt(player.style.left);
-        let currentTop = parseInt(player.style.top);
-
-        // Обчислюємо нові координати квадрату залежно від швидкості
-        let newLeft = currentLeft + playerSpeed;
-        let newTop = currentTop + playerSpeed;
-
-        // Встановлюємо нові координати квадрату
-        player.style.left = newLeft + "px";
-        player.style.top = newTop + "px";
-    }
-
     function resetPlayerPosition() {
         player.style.left = Math.random() * (window.innerWidth - 100) + "px";
         player.style.top = Math.random() * (window.innerHeight - 100) + "px";
-
-        // Збільшуємо швидкість квадрату з кожним кліком
-        playerSpeed += 0.5;
     }
 
     function getTimeForDifficulty(difficulty) {
@@ -103,7 +80,4 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 });
-
- 
-
 
