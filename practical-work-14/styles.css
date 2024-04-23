@@ -9,7 +9,7 @@ body {
     width: 600px;
     margin: 0 auto;
     text-align: center;
-    
+    color: white;
 }
 
 .game-container {
@@ -36,6 +36,7 @@ body {
     background-color: #ddd;
     border: 1px solid #aaa;
 }
+
 .light.on {
     background-color: #000;
 }
@@ -45,6 +46,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-top: 20px;
+    color: white;
 }
 
 #target-lights,
@@ -56,10 +58,10 @@ body {
 #new-game,
 #reload {
     margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
