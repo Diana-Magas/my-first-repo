@@ -51,7 +51,6 @@ body {
 #moves,
 #time {
     flex: 1;
-    color: white;
 }
 
 #new-game,
