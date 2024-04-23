@@ -1,22 +1,15 @@
+body {
+    font-family: sans-serif;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
 .container {
-    max-width: 600px;
+    width: 600px;
     margin: 0 auto;
     text-align: center;
-}
-
-.info-row {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-}
-
-.info-item {
-    flex: 1;
-    text-align: center;
-}
-
-body {
-    background-image: url('background.jpg');
+    
 }
 
 .game-container {
@@ -26,9 +19,11 @@ body {
     background-position: center;
 }
 
+
 .game-board {
     width: 250px;
     height: 250px;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
@@ -41,17 +36,30 @@ body {
     background-color: #ddd;
     border: 1px solid #aaa;
 }
+.light.on {
+    background-color: #000;
+}
 
-button {
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#target-lights,
+#moves,
+#time {
+    flex: 1;
+}
+
+#new-game,
+#reload {
     margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
