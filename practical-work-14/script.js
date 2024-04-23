@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
   const boardSize = 5;
   const totalLights = boardSize * boardSize;
-  const timeLimit = 300; 
+  const timeLimit = 300;
   let targetLights;
   let moves = 0;
   let timer;
@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
   initializeGame();
 
-  
   newGameButton.addEventListener("click", startNewGame);
   reloadButton.addEventListener("click", reloadGame);
 
@@ -91,10 +90,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const row = Math.floor(index / boardSize);
     const col = index % boardSize;
     toggleSingleLight(index);
-    toggleSingleLight(index - 1); 
-    toggleSingleLight(index + 1); 
-    toggleSingleLight(index - boardSize); 
-    toggleSingleLight(index + boardSize); 
+    toggleSingleLight(index - 1);
+    toggleSingleLight(index + 1);
+    toggleSingleLight(index - boardSize);
+    toggleSingleLight(index + boardSize);
     updateStats();
     checkWin();
   }
@@ -113,22 +112,21 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   function checkWin() {
-  const onLights = document.querySelectorAll(".light.on").length;
-  const now = new Date();
-  const elapsedTime = Math.floor((now - startTime) / 1000); 
-  if (onLights === totalLights) {
-    clearInterval(timer);
-    const minutes = Math.floor(elapsedTime / 60);
-    const seconds = elapsedTime % 60;
-    const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    const message = `Congratulations! You won in ${moves} moves and ${formattedTime}!`;
-    alert(message);
-  } else if (elapsedTime >= timeLimit) {
-    clearInterval(timer);
-    alert("Time over. Good luck next time!");
+    const onLights = document.querySelectorAll(".light.on").length;
+    const now = new Date();
+    const elapsedTime = Math.floor((now - startTime) / 1000);
+    if (onLights === totalLights) {
+      clearInterval(timer);
+      const minutes = Math.floor(elapsedTime / 60);
+      const seconds = elapsedTime % 60;
+      const formattedTime = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      const message = `Congratulations! You won in ${moves} moves and ${formattedTime}!`;
+      alert(message);
+    } else if (elapsedTime >= timeLimit) {
+      clearInterval(timer);
+      alert("Time over. Good luck next time!");
+    }
   }
-}
-
 
   function chaseTheLights() {
     for (let row = 1; row < boardSize; row++) {
@@ -146,6 +144,28 @@ document.addEventListener("DOMContentLoaded", function() {
       return document.querySelector(`.light[data-index="${index}"]`).classList.contains("on");
     }
     return false;
+  }
+
+  // Ajax запит за JSON даними
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        const response = JSON.parse(xhr.responseText);
+        // Обробляємо дані гри
+        handleGameData(response);
+      } else {
+        console.error('Failed to fetch game data');
+      }
+    }
+  };
+
+  xhr.open("GET", "game.json");
+  xhr.send();
+
+  function handleGameData(data) {
+    // Обробка отриманих даних гри
+    console.log(data);
   }
 });
 
