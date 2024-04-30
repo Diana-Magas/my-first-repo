@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Practical Work 15</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="css/styles.css"/>
   </head>
   <body>
     <header>
@@ -12,7 +12,8 @@
         <div class="logo-container">
           <img src="images/logo.jpg" class="logo-img" />
           <div class="label-container">
-            <h1 class="logo-name">Mahas company</h1>
+            <a href="./index.html" class="logo-link">
+            <h1 class="logo-name">Mahas company</h1></a>
             <span class="name-family-logo_span">
               <img src="images/icon.jpg" class="family-icon" />
               Mahas family
@@ -24,12 +25,12 @@
             </div>
         <nav class="navigation">
           <ul>
-            <li><a class="catalog" href="/catalog"><img src="images/catalog.png" alt="Сфефдщп" width="40" height="40">Catalog</a></li>
-            <li><a class="about" href="/about"><img src="images/about.png" alt="Фищге" width="40" height="40">About</a></li>
+            <li><a class="catalog" href="catalog.html"><img src="images/catalog.png" alt="catalog" width="40" height="40">Catalog</a></li>
+            <li><a class="about" href="/about"><img src="images/about.png" alt="about" width="40" height="40">About</a></li>
             <li><a class="awards" href="/awards"><img src="images/awards.png" alt="Awards" width="40" height="40">Awards</a></li>
             <li>
               <div class="number-container">
-                            <a class="tell" href="tel:(666)444-33-22">(666)444-33-22</a>
+                            <a class="tell" href="tel:(666)444-33-22"><img src="images/tell.png" alt="phone" width="40" height="40">(666)444-33-22</a>
                             <p class="text">*Contact us</p>
                         </div>
             </li>
@@ -47,8 +48,8 @@
           <p class="centered-text">< SLIDE-1 > </p>
         </div>
         <div class="container-row">
-          <div class="sub-container " data-label="CATALOG">
-            <p class="centered-text">CATALOG</p>
+          <div class="sub-container " data-label="CATALOG" onclick="window.location.href = 'catalog-categories.html';">
+            <p class="centered-text"></a>CATALOG</p>
           </div>
           <div class="sub-container " data-label="SALE">
             <p class="centered-text">SALE</p>
@@ -96,4 +97,5 @@
     </footer>
   </body>
 </html>
+
 
