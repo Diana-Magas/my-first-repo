@@ -49,6 +49,7 @@ header {
 .logo-name {
     color: #ff0000;
     font-size: 24px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .humburger-menu {
