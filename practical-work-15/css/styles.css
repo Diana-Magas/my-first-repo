@@ -57,11 +57,11 @@ header {
     cursor: pointer;
 }
 
-.burger-icon {
+.humburger-icon {
     font-size: 30px;
 }
 
-.burger-menu.active #burger-icon {
+.humburger-menu.active #humburger-icon {
     transform: rotate(45deg);
 }
 
@@ -414,7 +414,7 @@ white {
         display: none;
     }
 
-    .burger-menu {
+    .humburger-menu {
         display: block;
     }
 
@@ -501,7 +501,7 @@ white {
         display: none;
     }
 
-    .burger-menu {
+    .humburger-menu {
         display: block;
     }
 
