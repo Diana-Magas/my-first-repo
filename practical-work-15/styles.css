@@ -61,7 +61,7 @@ header {
     font-size: 30px;
 }
 
-.hamburger-menu.active #humburger-icon {
+.humburger-menu.active #humburger-icon {
     transform: rotate(45deg);
 }
 
