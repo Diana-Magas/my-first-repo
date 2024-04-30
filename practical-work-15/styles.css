@@ -144,7 +144,6 @@ header {
     text-align: center;
     box-sizing: border-box;
     height: 500px;
-    transition: transform 0.3s ease;
 }
 
 .container-row {
