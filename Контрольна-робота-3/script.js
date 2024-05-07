@@ -71,10 +71,10 @@ document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("log-button").addEventListener("click", function() {
   let operand1 = parseFloat(op1Input.value);
   if (operand1 <= 0) {
-    resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
+    resultHeading.textContent = "Operand 1 is less or equal to 0";
   } else {
     fetchData('JSON/log.json', function(data) {
-      resultHeading.textContent = "Result: " + data.name;
+      resultHeading.textContent = data.name;
       logInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
     });
   }
@@ -84,7 +84,7 @@ document.getElementById("sin-button").addEventListener("click", function() {
   let degrees = parseFloat(op1Input.value);
   let radians = degrees * (Math.PI / 180); 
   fetchData('JSON/sin.json', function(data) {
-    resultHeading.textContent = "Result: " + data.name;
+    resultHeading.textContent = data.name;
     sinInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
   });
 });
@@ -93,8 +93,13 @@ document.getElementById("tan-button").addEventListener("click", function() {
   let degrees = parseFloat(op1Input.value);
   let radians = degrees * (Math.PI / 180); 
   fetchData('JSON/tan.json', function(data) {
-    resultHeading.textContent = "Result: " + data.name;
+    resultHeading.textContent = data.name;
     tanInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
   });
 });
+
+// Встановлюємо текст під кнопками
+document.getElementById("log-button").textContent = "Logarithm";
+document.getElementById("sin-button").textContent = "Sine";
+document.getElementById("tan-button").textContent = "Tangent";
 
