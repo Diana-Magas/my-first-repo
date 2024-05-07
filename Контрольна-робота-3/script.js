@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 //Виведення довідки з сервера для натурального логарифма, синуса і тангенса
 document.addEventListener("DOMContentLoaded", function() {
-  let op1Input = document.getElementById("op1");
+   let op1Input = document.getElementById("op1"); // Оголошення змінної op1Input
   let op2Input = document.getElementById("op2");
   let resultHeading = document.getElementById("res");
   let logInfoDiv = document.getElementById("log-info");
