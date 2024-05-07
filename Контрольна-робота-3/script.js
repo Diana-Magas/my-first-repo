@@ -75,7 +75,7 @@ document.getElementById("log-button").addEventListener("click", function() {
   } else {
     fetchData('JSON/log.json', function(data) {
       resultHeading.textContent = "Result: " + data.name;
-      logInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+      logInfoDiv.innerHTML = `<h3>${data.name}</h3><img src="${data.image_name}" alt="${data.name}"><p>${data.description}</p>`;
     });
   }
 });
@@ -85,7 +85,7 @@ document.getElementById("sin-button").addEventListener("click", function() {
   let radians = degrees * (Math.PI / 180); 
   fetchData('JSON/sin.json', function(data) {
     resultHeading.textContent = "Result: " + data.name;
-    sinInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+    sinInfoDiv.innerHTML = `<h3>${data.name}</h3><img src="${data.image_name}" alt="${data.name}"><p>${data.description}</p>`;
   });
 });
 
@@ -94,6 +94,6 @@ document.getElementById("tan-button").addEventListener("click", function() {
   let radians = degrees * (Math.PI / 180); 
   fetchData('JSON/tan.json', function(data) {
     resultHeading.textContent = "Result: " + data.name;
-    tanInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+    tanInfoDiv.innerHTML = `<h3>${data.name}</h3><img src="${data.image_name}" alt="${data.name}"><p>${data.description}</p>`;
   });
 });
