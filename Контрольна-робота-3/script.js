@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 //Виведення довідки з сервера для натурального логарифма, синуса і тангенса
 document.addEventListener("DOMContentLoaded", function() {
-   let op1Input = document.getElementById("op1"); // Оголошення змінної op1Input
+  let op1Input = document.getElementById("op1");
   let op2Input = document.getElementById("op2");
   let resultHeading = document.getElementById("res");
   let logInfoDiv = document.getElementById("log-info");
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       fetchData('JSON/log.json', function(data) {
         resultHeading.textContent = "Result: " + data.name;
-        logInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+        logInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
       });
     }
   });
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let radians = degrees * (Math.PI / 180); 
     fetchData('JSON/sin.json', function(data) {
       resultHeading.textContent = "Result: " + data.name;
-      sinInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+      sinInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
     });
   });
 
@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let radians = degrees * (Math.PI / 180); 
     fetchData('JSON/tan.json', function(data) {
       resultHeading.textContent = "Result: " + data.name;
-      tanInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+      tanInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
     });
   });
 });
