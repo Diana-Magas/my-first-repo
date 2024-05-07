@@ -66,32 +66,49 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 //Виведення довідки з сервера для натурального логарифма, синуса і тангенса
-document.getElementById("log-button").addEventListener("click", function() {
-  let operand1 = parseFloat(op1Input.value);
-  if (operand1 <= 0) {
-    resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
-  } else {
-    fetchData('JSON/log.json', function(data) {
-      resultHeading.textContent = "Result: " + data.name;
-      logInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
-    });
+document.addEventListener("DOMContentLoaded", function() {
+  let op1Input = document.getElementById("op1");
+  let op2Input = document.getElementById("op2");
+  let resultHeading = document.getElementById("res");
+  let logInfoDiv = document.getElementById("log-info");
+  let sinInfoDiv = document.getElementById("sin-info");
+  let tanInfoDiv = document.getElementById("tan-info");
+
+  function fetchData(url, callback) {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => callback(data))
+      .catch(error => console.log("Error fetching data:", error));
   }
-});
 
-document.getElementById("sin-button").addEventListener("click", function() {
-  let degrees = parseFloat(op1Input.value);
-  let radians = degrees * (Math.PI / 180); 
-  fetchData('JSON/sin.json', function(data) {
-    resultHeading.textContent = "Result: " + data.name;
-    sinInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+  document.getElementById("log-button").addEventListener("click", function() {
+    let operand1 = parseFloat(op1Input.value);
+    if (operand1 <= 0) {
+      resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
+    } else {
+      fetchData('JSON/log.json', function(data) {
+        resultHeading.textContent = "Result: " + data.name;
+        logInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+      });
+    }
+  });
+
+  document.getElementById("sin-button").addEventListener("click", function() {
+    let degrees = parseFloat(op1Input.value);
+    let radians = degrees * (Math.PI / 180); 
+    fetchData('JSON/sin.json', function(data) {
+      resultHeading.textContent = "Result: " + data.name;
+      sinInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+    });
+  });
+
+  document.getElementById("tan-button").addEventListener("click", function() {
+    let degrees = parseFloat(op1Input.value);
+    let radians = degrees * (Math.PI / 180); 
+    fetchData('JSON/tan.json', function(data) {
+      resultHeading.textContent = "Result: " + data.name;
+      tanInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+    });
   });
 });
 
-document.getElementById("tan-button").addEventListener("click", function() {
-  let degrees = parseFloat(op1Input.value);
-  let radians = degrees * (Math.PI / 180); 
-  fetchData('JSON/tan.json', function(data) {
-    resultHeading.textContent = "Result: " + data.name;
-    tanInfoDiv.innerHTML = `<img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
-  });
-});
