@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", function() {
       resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
     } else {
       fetchData('JSON/log.json', function(data) {
-        resultHeading.textContent = "Result: " + data.name;
+        resultHeading.textContent = "Result: " ;
         logInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
       });
     }
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let degrees = parseFloat(op1Input.value);
     let radians = degrees * (Math.PI / 180); 
     fetchData('JSON/sin.json', function(data) {
-      resultHeading.textContent = "Result: " + data.name;
+      resultHeading.textContent = "Result: ";
       sinInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
     });
   });
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let degrees = parseFloat(op1Input.value);
     let radians = degrees * (Math.PI / 180); 
     fetchData('JSON/tan.json', function(data) {
-      resultHeading.textContent = "Result: " + data.name;
+      resultHeading.textContent = "Result: ";
       tanInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
     });
   });
