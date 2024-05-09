@@ -67,31 +67,34 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 //Виведення довідки з сервера для натурального логарифма, синуса і тангенса
 document.getElementById("log-button").addEventListener("click", function() {
-    let operand1 = parseFloat(document.getElementById("op1").value);
+    let operand1 = parseFloat(op1Input.value);
     if (operand1 <= 0) {
-        document.getElementById("content").textContent = "Result: Operand 1 is less or equal to 0";
+      resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
     } else {
-        fetchData('JSON/log.json', function(data) {
-            document.getElementById("content").innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
-        });
+      fetchData('JSON/log.json', function(data) {
+        resultHeading.textContent = "Result: ";
+        logInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+      });
     }
-});
+  });
 
-document.getElementById("sin-button").addEventListener("click", function() {
-    let degrees = parseFloat(document.getElementById("op1").value);
+  document.getElementById("sin-button").addEventListener("click", function() {
+    let degrees = parseFloat(op1Input.value);
     let radians = degrees * (Math.PI / 180); 
     fetchData('JSON/sin.json', function(data) {
-        document.getElementById("content").innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+      resultHeading.textContent = "Result: ";
+      sinInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
     });
-});
+  });
 
-document.getElementById("tan-button").addEventListener("click", function() {
-    let degrees = parseFloat(document.getElementById("op1").value);
+  document.getElementById("tan-button").addEventListener("click", function() {
+    let degrees = parseFloat(op1Input.value);
     let radians = degrees * (Math.PI / 180); 
     fetchData('JSON/tan.json', function(data) {
-        document.getElementById("content").innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
+      resultHeading.textContent = "Result: ";
+      tanInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
     });
-}); 
+  });
 
 
 
