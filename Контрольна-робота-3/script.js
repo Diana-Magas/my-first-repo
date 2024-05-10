@@ -27,43 +27,39 @@ document.addEventListener("DOMContentLoaded", function () {
         let operand2 = parseFloat(op2Input.value);
         let result;
 
+     // Перевірка, чи введений Операнд 2 для операцій логарифму, синуса та тангенсу
+        if ((operation === 'log' || operation === 'sin' || operation === 'tan') && !isNaN(operand2)) {
+            resultHeading.textContent = "Enter only Operand1!";
+            return;
+        }
+
+   // Перевірка, чи введені обидва операнди для додавання, віднімання, множення та ділення
+        if ((operation === 'add' || operation === 'sub' || operation === 'mul' || operation === 'div') && (isNaN(operand1) || isNaN(operand2))) {
+            resultHeading.textContent = "Action is not possible! Please enter both operands.";
+            return;
+        }
+
         switch (operation) {
             //додавання
             case 'add':
-                if (isNaN(operand1) || isNaN(operand2)) {
-                    resultHeading.textContent = "You didn`t enter an operand!";
-                    return;
-                }
                 result = operand1 + operand2;
                 resultHeading.textContent = "Result: " + result;
                 break;
-            
+
             //віднімання
             case 'sub':
-                if (isNaN(operand1) || isNaN(operand2)) {
-                    resultHeading.textContent = "You didn`t enter an operand!";
-                    return;
-                }
                 result = operand1 - operand2;
                 resultHeading.textContent = "Result: " + result;
                 break;
-            
+
             //множення
             case 'mul':
-                if (isNaN(operand1) || isNaN(operand2)) {
-                    resultHeading.textContent = "You didn`t enter an operand!";
-                    return;
-                }
                 result = operand1 * operand2;
                 resultHeading.textContent = "Result: " + result;
                 break;
-            
+
             //ділення
             case 'div':
-                if (isNaN(operand1) || isNaN(operand2)) {
-                    resultHeading.textContent = "You didn`t enter an operand!";
-                    return;
-                }
                 if (operand2 === 0) {
                     resultHeading.textContent = "Result: Attention can not be divided by 0!!!";
                     return;
@@ -72,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     resultHeading.textContent = "Result: " + result;
                 }
                 break;
-            
+
             //Логарифм і довідка
             case 'log':
                 if (op1Input.value.trim() === '') {
@@ -90,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 }
                 break;
-            
+
             //Синус і довідка
             case 'sin':
                 if (op1Input.value.trim() === '') {
@@ -104,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     sinInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br> ${data.description}`;
                 });
                 break;
-            
+
             //Тангенс і довідка
             case 'tan':
                 if (op1Input.value.trim() === '') {
@@ -129,5 +125,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("sin-button").addEventListener("click", (e) => handleButtonClick(e, 'sin'));
     document.getElementById("tan-button").addEventListener("click", (e) => handleButtonClick(e, 'tan'));
 });
+
 
 
