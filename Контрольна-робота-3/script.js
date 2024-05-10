@@ -1,126 +1,133 @@
-//обчислення суми, різниці і добутку
-document.addEventListener("DOMContentLoaded", function() {
-  let op1Input = document.getElementById("op1");
-  let op2Input = document.getElementById("op2");
-  let resultHeading = document.getElementById("res");
+document.addEventListener("DOMContentLoaded", function () {
+    let op1Input = document.getElementById("op1");
+    let op2Input = document.getElementById("op2");
+    let resultHeading = document.getElementById("res");
+    let logInfoDiv = document.getElementById("log-info");
+    let sinInfoDiv = document.getElementById("sin-info");
+    let tanInfoDiv = document.getElementById("tan-info");
 
-  document.getElementById("add-button").addEventListener("click", function() {
-    let result = parseFloat(op1Input.value) + parseFloat(op2Input.value);
-    resultHeading.textContent = "Result: " + Number(result).toString();
-  });
-
-  document.getElementById("sub-button").addEventListener("click", function() {
-    let result = parseFloat(op1Input.value) - parseFloat(op2Input.value);
-    resultHeading.textContent = "Result: " + Number(result).toString();
-  });
-
-  document.getElementById("mul-button").addEventListener("click", function() {
-    let result = parseFloat(op1Input.value) * parseFloat(op2Input.value);
-    resultHeading.textContent = "Result: " + Number(result).toString();
-  });
-
-  document.getElementById("div-button").addEventListener("click", function() {
-    let result = parseFloat(op1Input.value) / parseFloat(op2Input.value);
-    resultHeading.textContent = "Result: " + Number(result).toString();
-  });
-});
-// обчислення частки, натурального логарифма, синуса і тангенса
-document.addEventListener("DOMContentLoaded", function() {
-  let op1Input = document.getElementById("op1");
-  let op2Input = document.getElementById("op2");
-  let resultHeading = document.getElementById("res");
-
-  document.getElementById("div-button").addEventListener("click", function() {
-    let operand1 = parseFloat(op1Input.value);
-    let operand2 = parseFloat(op2Input.value);
-    if (operand2 === 0) {
-      resultHeading.textContent = "Result: Operand 2 is equal to 0";
-    } else {
-      let result = operand1 / operand2;
-      resultHeading.textContent = "Result: " + result;
+    function clearInfoDivs() {
+        logInfoDiv.innerHTML = '';
+        sinInfoDiv.innerHTML = '';
+        tanInfoDiv.innerHTML = '';
     }
-  });
 
-  document.getElementById("log-button").addEventListener("click", function() {
-    let operand1 = parseFloat(op1Input.value);
-    if (operand1 <= 0) {
-      resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
-    } else {
-      let result = Math.log(operand1);
-      resultHeading.textContent = "Result: " + result;
+    function fetchData(url, callback) {
+        fetch(url)
+            .then(response => response.json())
+            .then(data => callback(data))
+            .catch(error => console.error("Error fetching data:", error));
     }
-  });
 
-  document.getElementById("sin-button").addEventListener("click", function() {
-    let degrees = parseFloat(op1Input.value);
-    let radians = degrees * (Math.PI / 180); // Переведення градусів в радіани
-    let result = Math.sin(radians);
-    resultHeading.textContent = "Result: " + result;
-  });
+    function handleButtonClick(event, operation) {
+        event.preventDefault();
+        clearInfoDivs();
 
-  document.getElementById("tan-button").addEventListener("click", function() {
-    let degrees = parseFloat(op1Input.value);
-    let radians = degrees * (Math.PI / 180); // Переведення градусів в радіани
-    let result = Math.tan(radians);
-    resultHeading.textContent = "Result: " + result;
-  });
-});
+        let operand1 = parseFloat(op1Input.value);
+        let operand2 = parseFloat(op2Input.value);
+        let result;
 
-//Виведення довідки з сервера для натурального логарифма, синуса і тангенса
-document.addEventListener("DOMContentLoaded", function() {
-  let op1Input = document.getElementById("op1");
-  let op2Input = document.getElementById("op2");
-  let resultHeading = document.getElementById("res");
-  let logInfoDiv = document.getElementById("log-info");
-  let sinInfoDiv = document.getElementById("sin-info");
-  let tanInfoDiv = document.getElementById("tan-info");
-
-  function fetchData(url, callback) {
-    fetch(url)
-      .then(response => response.json())
-      .then(data => callback(data))
-      .catch(error => console.log("Error fetching data:", error));
-  }
-
-  function handleButtonClick(operation) {
-    let operand1 = parseFloat(op1Input.value);
-
-    switch (operation) {
-      case 'log':
-        if (operand1 <= 0) {
-          resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
-        } else {
-          fetchData('JSON/log.json', function(data) {
-            resultHeading.textContent = "Result: ";
-            logInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
-          });
+        switch (operation) {
+            //додавання
+            case 'add':
+                if (isNaN(operand1) || isNaN(operand2)) {
+                    resultHeading.textContent = "You didn`t enter an operand!";
+                    return;
+                }
+                result = operand1 + operand2;
+                resultHeading.textContent = "Result: " + result;
+                break;
+            
+            //віднімання
+            case 'sub':
+                if (isNaN(operand1) || isNaN(operand2)) {
+                    resultHeading.textContent = "You didn`t enter an operand!";
+                    return;
+                }
+                result = operand1 - operand2;
+                resultHeading.textContent = "Result: " + result;
+                break;
+            
+            //множення
+            case 'mul':
+                if (isNaN(operand1) || isNaN(operand2)) {
+                    resultHeading.textContent = "You didn`t enter an operand!";
+                    return;
+                }
+                result = operand1 * operand2;
+                resultHeading.textContent = "Result: " + result;
+                break;
+            
+            //ділення
+            case 'div':
+                if (isNaN(operand1) || isNaN(operand2)) {
+                    resultHeading.textContent = "You didn`t enter an operand!";
+                    return;
+                }
+                if (operand2 === 0) {
+                    resultHeading.textContent = "Result: Attention can not be divided by 0!!!";
+                    return;
+                } else {
+                    result = operand1 / operand2;
+                    resultHeading.textContent = "Result: " + result;
+                }
+                break;
+            
+            //Логарифм і довідка
+            case 'log':
+                if (op1Input.value.trim() === '') {
+                    resultHeading.textContent = "You didn`t enter an operand!";
+                    return;
+                }
+                if (operand1 <= 0) {
+                    resultHeading.textContent = "Result: Operand 1 is less or equal to 0";
+                    return;
+                } else {
+                    result = Math.log(operand1);
+                    fetchData('JSON/log.json', function (data) {
+                        resultHeading.textContent = "Result: " + result;
+                        logInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br> ${data.description}`;
+                    });
+                }
+                break;
+            
+            //Синус і довідка
+            case 'sin':
+                if (op1Input.value.trim() === '') {
+                    resultHeading.textContent = "You didn`t enter an operand!";
+                    return;
+                }
+                operand1 = operand1 * Math.PI / 180;
+                result = Math.sin(operand1);
+                fetchData('JSON/sin.json', function (data) {
+                    resultHeading.textContent = "Result: " + result;
+                    sinInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br> ${data.description}`;
+                });
+                break;
+            
+            //Тангенс і довідка
+            case 'tan':
+                if (op1Input.value.trim() === '') {
+                    resultHeading.textContent = "You didn`t enter an operand!";
+                    return;
+                }
+                operand1 = operand1 * Math.PI / 180;
+                result = Math.tan(operand1);
+                fetchData('JSON/tan.json', function (data) {
+                    resultHeading.textContent = "Result: " + result;
+                    tanInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br> ${data.description}`;
+                });
+                break;
         }
-        break;
-      case 'sin':
-        let degrees = parseFloat(op1Input.value);
-        let radians = degrees * (Math.PI / 180); 
-        fetchData('JSON/sin.json', function(data) {
-          resultHeading.textContent = "Result: ";
-          sinInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
-        });
-        break;
-      case 'tan':
-        let degrees = parseFloat(op1Input.value);
-        let radians = degrees * (Math.PI / 180); 
-        fetchData('JSON/tan.json', function(data) {
-          resultHeading.textContent = "Result: ";
-          tanInfoDiv.innerHTML = `<strong>${data.name}</strong><br><img src="${data.image_name}" alt="${data.name}"><br>Description: ${data.description}`;
-        });
-        break;
     }
-  }
 
-
-  document.getElementById("log-button").addEventListener("click", () => handleButtonClick('log'));
-  document.getElementById("sin-button").addEventListener("click", () => handleButtonClick('sin'));
-  document.getElementById("tan-button").addEventListener("click", () => handleButtonClick('tan'));
+    document.getElementById("add-button").addEventListener("click", (e) => handleButtonClick(e, 'add'));
+    document.getElementById("sub-button").addEventListener("click", (e) => handleButtonClick(e, 'sub'));
+    document.getElementById("mul-button").addEventListener("click", (e) => handleButtonClick(e, 'mul'));
+    document.getElementById("div-button").addEventListener("click", (e) => handleButtonClick(e, 'div'));
+    document.getElementById("log-button").addEventListener("click", (e) => handleButtonClick(e, 'log'));
+    document.getElementById("sin-button").addEventListener("click", (e) => handleButtonClick(e, 'sin'));
+    document.getElementById("tan-button").addEventListener("click", (e) => handleButtonClick(e, 'tan'));
 });
-});
-
 
 
