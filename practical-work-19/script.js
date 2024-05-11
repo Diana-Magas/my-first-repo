@@ -1,20 +1,36 @@
 import { ajaxUtils } from './ajax-utils.js';
+import carousel from "./carusel.js";
+import carousel from "./carousel.js";
+import { sendGetRequest } from "./ajax-utils.js";
 
-const contentContainerSelector = ".container";
-const homeHTML = "./snippets/home-snippet.html";
+(function (global) {
+    let Content = {};
+    const homeHTML = "./snippets/home-snippet.html";
+    const contentContainerSelector = ".content__container";
 
-document.addEventListener("DOMContentLoaded", (event) => {
-    
-    document.querySelector(contentContainerSelector).innerHTML = `
-    <div class="loader__container">
-        <div class="loader"></div>
-    </div>`;
+    const insertHTML = (selector, html) => {
+        document.querySelector(selector).innerHTML = html;
+    };
 
+    const showLoading = (selector) => {
+        document.querySelector(selector).innerHTML = `
+                <div class="loader__container">
+                    <div class="loader"></div>
+                </div>`;
+    };
 
-    setTimeout(() => {
-        ajaxUtils.sendGetRequest(homeHTML, (response) => {
-            document.querySelector(contentContainerSelector).innerHTML = response;
-            carousel(); 
-        }, false);
-    }, 3750);
-});
+    document.addEventListener("DOMContentLoaded", (event) => {
+        showLoading(contentContainerSelector);
+        setTimeout(() => {
+            sendGetRequest(
+                homeHTML,
+                (response) => {
+                    insertHTML(contentContainerSelector, response);
+                    carousel();
+                },
+                false
+            );
+        }, 3750);
+    });
+    global.Content = Content;
+})(window);
