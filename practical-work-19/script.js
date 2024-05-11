@@ -1,35 +1,24 @@
 
-// pr-19
-import { ajaxUtils } from './ajax-utils.js'; // Правильне імпортування модуля ajaxUtils
+ import { ajaxUtils } from './ajax-utils.js';
 
-(function (global) {
-    let Content = {};
-    const homeHTML = "./snippets/home-snippet.html";
     const contentContainerSelector = ".container";
-
-    const insertHTML = (selector, html) => {
-        document.querySelector(selector).innerHTML = html;
-    };
-
-    const showLoading = (selector) => {
-        document.querySelector(selector).innerHTML = `
-                <div class="loader__container">
-                    <div class="loader"></div>
-                </div>`;
-    };
+    const homeHTML = "./snippets/home-snippet.html";
 
     document.addEventListener("DOMContentLoaded", (event) => {
-        showLoading(contentContainerSelector);
+        // Показати ефект завантаження
+        document.querySelector(contentContainerSelector).innerHTML = `
+        <div class="loader__container">
+            <div class="loader"></div>
+        </div>`;
+
+        // Завантажити вміст та вставити його після певного часу
         setTimeout(() => {
-            ajaxUtils.sendGetRequest( // Використовуємо правильний об'єкт ajaxUtils
-                homeHTML,
-                (response) => {
-                    insertHTML(contentContainerSelector, response);
-                    carousel();
-                },
-                false
-            );
+            ajaxUtils.sendGetRequest(homeHTML, (response) => {
+                // Вставити завантажений вміст
+                document.querySelector(contentContainerSelector).innerHTML = response;
+                // Ініціалізувати карусель
+                carusel();
+            }, false);
         }, 3750);
     });
-    global.Content = Content;
-})(window);
+
