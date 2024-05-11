@@ -44,6 +44,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     nextButton.addEventListener('click', showNextSlide);
 
+    carousel.addEventListener('transitionstart', stopAutoSlide);
+
+    carousel.addEventListener('transitionend', startAutoSlide);
+
+    startAutoSlide();
+
+    if (slides.length < 2) {
+        prevButton.disabled = true;
+        nextButton.disabled = true;
+    }
+});
+
+    function updateButtons() {
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === slides.length - 1;
+    }
+
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(showNextSlide, intervalDuration);
+    }
+
+    function stopAutoSlide() {
+        clearInterval(autoSlideInterval);
+    }
+
+    prevButton.addEventListener('click', showPrevSlide);
+
+    nextButton.addEventListener('click', showNextSlide);
+
 
     carousel.addEventListener('transitionstart', stopAutoSlide);
 
