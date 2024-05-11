@@ -1,6 +1,5 @@
-import { ajaxUtils } from './ajax-utils.js';
+
 import carousel from "./carusel.js";
-import carousel from "./carousel.js";
 import { sendGetRequest } from "./ajax-utils.js";
 
 (function (global) {
