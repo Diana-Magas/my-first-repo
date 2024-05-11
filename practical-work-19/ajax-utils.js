@@ -1,4 +1,4 @@
-(function (global) {
+((function (global) {
     let ajaxUtils = {};
 
     function getRequestObject() {
