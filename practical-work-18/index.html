@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Practical-work-18</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <div class="wrapper">
+            <div class="logo-container">
+        <div class="logo-container">
+          <img src="images/logo.jpg" class="logo-img" />
+          <div class="label-container">
+            <a href="./index.html" class="logo-link">
+            <h1 class="logo-name">Mahas company</h1></a>
+            <span class="name-family-logo_span">
+              <img src="images/icon.jpg" class="family-icon" />
+              Mahas family
+            </span>
+          </div>
+        </div>
+            </div>
+         <nav class="navigation">
+                <ul>
+                    <li><a class="catalog" href="catalog-categories.html"><img src="images/catalog.png" alt="catalog" width="30" height="30">Catalog</a></li>
+                    <li><a class="about" href="/about"><img src="images/about.png" alt="about" width="30" height="30">About</a></li>
+                    <li><a class="awards" href="/awards"><img src="images/awards.png" alt="awards" width="30" height="30">Awards</a></li>
+                    <li>
+                        <div class="number-container">
+                            <a class="tell" href="tel:(555)555-44-55">(555)666-41-44</a>
+                            <p class="text">*Contact us</p>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+           <button id="humburger-menu" class="image-button"></button>
+
+        </div>
+    </header>
+    <nav id="nav">
+        <ul>
+            <li>
+                <a href="index.html" class="nav-icon home-page">Home</a>
+            </li>
+            <li>
+                <a href="catalog-categories.html" class="nav-icon catalog-page">Catalog</a>
+            </li>
+            <li>
+                <a href="" class="nav-icon">About</a>
+            </li>
+            <li>
+                <a href="" class="nav-icon">Awards</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+      <div class="container">
+            <div class="number-container-hidden">
+                <a class="tell-hidden" href="tel:(666)444-33-22">(666)444-33-22</a>
+            </div>
+            <p class="text-hidden">* CONTACT US</p>
+      <div class="big-container">
+                <div class="carousel">
+                    <div class="slide">SLIDE 1</div>
+                    <div class="slide">SLIDE 2</div>
+                    <div class="slide">SLIDE 3</div>
+                </div>
+                <button class="prev-button" onclick="prevSlide()">&#10094;</button>
+                <button class="next-button" onclick="nextSlide()">&#10095;</button>
+            </div>
+  </div>
+</div>
+        <div class="container-row">
+          <div class="sub-container " data-label="CATALOG" onclick="window.location.href = 'catalog-categories.html';">
+            <p class="centered-text"></a>CATALOG</p>
+          </div>
+          <div class="sub-container " data-label="SALE">
+            <p class="centered-text">SALE</p>
+          </div>
+          <div class="sub-container " data-label="MAP">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d5244.010586798599!2d24.7006801!3d48.9152914!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4730c13f11e65933%3A0x872f96ec91343943!2z0J_RgNC40LrQsNGA0L_QsNGC0YHRjNC60LjQuSDQvdCw0YbRltC-0L3QsNC70YzQvdC40Lkg0YPQvdGW0LLQtdGA0YHQuNGC0LXRgiDRltC80LXQvdGWINCS0LDRgdC40LvRjyDQodGC0LXRhNCw0L3QuNC60LA!5e0!3m2!1suk!2sua!4v1714051379090!5m2!1suk!2sua"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+      </div>
+    </main>
+    <footer class="footer-container">
+      <div class="wrapper-footer">
+        <div class="footer-column">
+          <h3>Hours</h3>
+          <p>Mon-Fri: 9am - 6pm</p>
+          <p>Sat:10am-4pm</p>
+          <p>Sunday: Closed</p>
+          <white>
+            *E-store works 24/7, however, orders are processed during business
+            hours only.
+          </white>
+        </div>
+        <div class="footer-column">
+          <h3>Address</h3>
+          <p>Via Tortona,54</p>
+          <p>Milan, Italy</p>
+        </div>
+        <div class="footer-column">
+          <h3>Comments</h3>
+          <p>"The best Mahas company I've ever seen! Awesome!"</p>
+          <p>
+            "Amazing catalog! Great service! I will recommend it to all my
+            friends!"
+          </p>
+        </div>
+      </div>
+      <div class="wrapper-center">&copy; Copyright Mahas Company 2024</div>
+    </footer>
+    <script src="carusel.js"></script>
+<script src="humburger.js"></script>
+  </body>
+</html>
