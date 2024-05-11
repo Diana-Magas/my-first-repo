@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.slide');
-    const prevBtn = document.querySelector('.prev-button');
-    const nextBtn = document.querySelector('.next-button');
+    const prevButton = document.querySelector('.prev-button');
+    const nextButton = document.querySelector('.next-button');
     let currentIndex = 0;
     let autoSlideInterval; 
     const intervalDuration = 3000; 
@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateButtons() {
-        prevBtn.disabled = currentIndex === 0;
-        nextBtn.disabled = currentIndex === slides.length - 1;
+        prevButton.disabled = currentIndex === 0;
+        nextButton.disabled = currentIndex === slides.length - 1;
     }
 
     function startAutoSlide() {
@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(autoSlideInterval);
     }
 
-    prevBtn.addEventListener('click', showPrevSlide);
-    nextBtn.addEventListener('click', showNextSlide);
+    prevButton.addEventListener('click', showPrevSlide);
+    nextButton.addEventListener('click', showNextSlide);
 
 
     carousel.addEventListener('transitionstart', stopAutoSlide);
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     if (slides.length < 2) {
-        prevBtn.disabled = true;
-        nextBtn.disabled = true;
+        prevButton.disabled = true;
+        nextButton.disabled = true;
     }
 });
