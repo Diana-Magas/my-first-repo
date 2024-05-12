@@ -1,4 +1,4 @@
-import "./humburger.js";
+import "./humburger.js"; 
 import "./ajax-utils.js";
 import "./carusel.js";
 
@@ -18,7 +18,7 @@ import "./carusel.js";
                 homeHTML,
                 (response) => {
                     insertHTML(ContainerSelector, response);
-                    carousel(); 
+                    carusel(); 
                 },
                 false
             );
@@ -27,4 +27,5 @@ import "./carusel.js";
 
     global.Content = Content;
 })(window);
+
 
