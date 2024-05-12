@@ -1,6 +1,6 @@
 import "./humburger.js";
 import "./ajax-utils.js";
-import from "./carusel.js";
+import "./carusel.js";
 
 (function (global) {
     let Content = {};
@@ -11,19 +11,20 @@ import from "./carusel.js";
         document.querySelector(selector).innerHTML = html;
     };
 
-
     document.addEventListener("DOMContentLoaded", (event) => {
-        showLoading(contentContainerSelector);
+        showLoading(ContainerSelector); 
         setTimeout(() => {
             ajaxUtils.sendGetRequest(
                 homeHTML,
                 (response) => {
-                    insertHTML(contentContainerSelector, response);
-                    carousel();
+                    insertHTML(ContainerSelector, response);
+                    carousel(); 
                 },
                 false
             );
         }, 3750);
     });
+
     global.Content = Content;
 })(window);
+
