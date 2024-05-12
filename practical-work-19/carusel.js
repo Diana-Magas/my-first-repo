@@ -41,11 +41,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     prevButton.addEventListener('click', showPrevSlide);
-
     nextButton.addEventListener('click', showNextSlide);
-
     carousel.addEventListener('transitionstart', stopAutoSlide);
-
     carousel.addEventListener('transitionend', startAutoSlide);
 
     startAutoSlide();
@@ -56,37 +53,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
-    function updateButtons() {
-        prevButton.disabled = currentIndex === 0;
-        nextButton.disabled = currentIndex === slides.length - 1;
-    }
-
-    function startAutoSlide() {
-        autoSlideInterval = setInterval(showNextSlide, intervalDuration);
-    }
-
-    function stopAutoSlide() {
-        clearInterval(autoSlideInterval);
-    }
-
-    prevButton.addEventListener('click', showPrevSlide);
-
-    nextButton.addEventListener('click', showNextSlide);
-
-
-    carousel.addEventListener('transitionstart', stopAutoSlide);
-
-
-    carousel.addEventListener('transitionend', startAutoSlide);
-
-    startAutoSlide();
-
-
-    if (slides.length < 2) {
-        prevButton.disabled = true;
-        nextButton.disabled = true;
-    }
-    document.addEventListener("DOMContentLoaded", function () {
-    carousel();
-});
-});
