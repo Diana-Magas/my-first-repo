@@ -30,7 +30,7 @@ header {
     width: 40px;
     height: 40px;
     border: none;
-    background-image: url('../images/humburger.png');
+    background-image: url('../Images/burger.png');
     background-size: cover;
 }
 
@@ -318,8 +318,7 @@ white {
 /* Large devices  */
 @media (min-width: 992px) and (max-width: 1199px) {
     header {
-        height: 150px;
-        background-color: #fff;
+        height: 100px;
     }
 
     .wrapper {
@@ -673,6 +672,10 @@ white {
         display: block;
     }
 
+    .text-hidden {
+        display: block;
+    }
+}
     .text-hidden {
         display: block;
     }
