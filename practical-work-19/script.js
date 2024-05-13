@@ -1,27 +1,13 @@
-import "./humburger.js";
-import "./ajax-utils.js";
-
-(function (global) {
-    let Content = {};
-    const homeHTML = "./snippets/home-snippet.html";
-    const contentContainerSelector = ".container";
-
-    const insertHTML = (selector, html) => {
+document.addEventListener("DOMContentLoaded", function () {
+    function insertHTML(selector, html) {
         document.querySelector(selector).innerHTML = html;
-    };
+    }
 
-    document.addEventListener("DOMContentLoaded", (event) => {
-        showLoading(containerSelector);
-        setTimeout(() => {
-            ajaxUtils.sendGetRequest(
-                homeHTML,
-                (response) => {
-                    insertHTML(containerSelector, response);
-                    carousel();
-                },
-                false
-            );
-        }, 3750);
-    });
-    global.Content = Content;
-})(window);
+    function loadSnippet() {
+        ajaxUtils.sendGetRequest("./snippets/home-snippet.html", function (response) {
+            insertHTML("countainer", response);
+        }, false);
+    }
+
+    loadSnippet();
+});
