@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function loadSnippet() {
         ajaxUtils.sendGetRequest("./snippets/home-snippet.html", function (response) {
-            insertHTML("main", response);
+            insertHTML("container", response);
         }, false);
     }
 
