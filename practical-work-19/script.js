@@ -1,6 +1,5 @@
 import "./humburger.js";
 import "./ajax-utils.js";
-import carusel from "./carusel.js";
 
 (function (global) {
     let Content = {};
