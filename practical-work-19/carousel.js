@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     if (slides.length < 2) {
-        prevBtn.disabled = true;
-        nextBtn.disabled = true;
+        prevButton.disabled = true;
+        nextButton.disabled = true;
     }
 });
