@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const carousel = document.querySelector('.carusel');
+    const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.slide');
-    const prevButton = document.querySelector('.prev-button');
-    const nextButton = document.querySelector('.next-button');
+    const prevBtn = document.querySelector('.prev-button');
+    const nextBtn = document.querySelector('.next-button');
     let currentIndex = 0;
-    let autoSlideInterval; 
-    const intervalDuration = 3000; 
+    let autoSlideInterval;
+    const intervalDuration = 10000;
 
     function goToSlide(index) {
         currentIndex = index;
@@ -28,8 +28,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function updateButtons() {
-        prevButton.disabled = currentIndex === 0;
-        nextButton.disabled = currentIndex === slides.length - 1;
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === slides.length - 1;
     }
 
     function startAutoSlide() {
@@ -40,16 +40,20 @@ document.addEventListener("DOMContentLoaded", function () {
         clearInterval(autoSlideInterval);
     }
 
-    prevButton.addEventListener('click', showPrevSlide);
-    nextButton.addEventListener('click', showNextSlide);
+    prevBtn.addEventListener('click', showPrevSlide);
+    nextBtn.addEventListener('click', showNextSlide);
+
+
     carousel.addEventListener('transitionstart', stopAutoSlide);
+
+
     carousel.addEventListener('transitionend', startAutoSlide);
 
     startAutoSlide();
 
+
     if (slides.length < 2) {
-        prevButton.disabled = true;
-        nextButton.disabled = true;
+        prevBtn.disabled = true;
+        nextBtn.disabled = true;
     }
 });
-
