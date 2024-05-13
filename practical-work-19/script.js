@@ -1,35 +1,75 @@
-import "./humburger.js";
-import "./ajax-utils.js";
-import  "./carousel.js";
-
-(function (global) {
-    let Content = {};
-    const homeHTML = "./snippets/home-snippet.html";
-    const containerSelector = ".container";
-
-    const insertHTML = (selector, html) => {
+document.addEventListener("DOMContentLoaded", function () {
+    function insertHTML(selector, html) {
         document.querySelector(selector).innerHTML = html;
-    };
+    }
 
-    const showLoading = (selector) => {
-        document.querySelector(selector).innerHTML = `
-                <div class="loader__container">
-                    <div class="loader"></div>
-                </div>`;
-    };
+    const homeHtml = "./snippets/home-snippet.html";
 
-    document.addEventListener("DOMContentLoaded", (event) => {
-        showLoading(containerSelector);
-        setTimeout(() => {
-            ajaxUtils.sendGetRequest(
-                homeHTML,
-                (response) => {
-                    insertHTML(containerSelector, response);
-                    carousel();
-                },
-                false
-            );
-        }, 3750);
-    });
-    global.Content = Content;
-})(window);
+    function loadSnippet() {
+        ajaxUtils.sendGetRequest(homeHtml, function (response) {
+            insertHTML("main", response);
+
+            // Після вставлення сніпету у DOM запускаємо карусель
+            startCarousel();
+        }, false);
+    }
+
+    loadSnippet();
+
+    // Функція для запуску каруселі
+    function startCarousel() {
+        const carousel = document.querySelector('.carousel');
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.querySelector('.prev-button');
+        const nextBtn = document.querySelector('.next-button');
+        let currentIndex = 0;
+        let autoSlideInterval;
+        const intervalDuration = 10000;
+
+        function goToSlide(index) {
+            currentIndex = index;
+            const offset = -index * 100;
+            carousel.style.transition = 'transform 0.5s ease';
+            carousel.style.transform = translateX(${offset}%);
+            updateButtons();
+        }
+
+        function showPrevSlide() {
+            stopAutoSlide();
+            currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+            goToSlide(currentIndex);
+        }
+
+        function showNextSlide() {
+            stopAutoSlide();
+            currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+            goToSlide(currentIndex);
+        }
+
+        function updateButtons() {
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === slides.length - 1;
+        }
+
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(showNextSlide, intervalDuration);
+        }
+
+        function stopAutoSlide() {
+            clearInterval(autoSlideInterval);
+        }
+
+        prevBtn.addEventListener('click', showPrevSlide);
+        nextBtn.addEventListener('click', showNextSlide);
+
+        carousel.addEventListener('transitionstart', stopAutoSlide);
+        carousel.addEventListener('transitionend', startAutoSlide);
+
+        if (slides.length < 2) {
+            prevBtn.disabled = true;
+            nextBtn.disabled = true;
+        }
+
+        startAutoSlide();
+    }
+});
