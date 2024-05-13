@@ -30,7 +30,7 @@ header {
     width: 40px;
     height: 40px;
     border: none;
-    background-image: url('../images/humburger.png');
+    background-image: url('../Images/burger.png');
     background-size: cover;
 }
 
@@ -265,7 +265,6 @@ header {
     clear: both;
     text-align: center;
 }
-
 .centered-text {
     text-align: center;
     color: white;
@@ -318,8 +317,7 @@ white {
 /* Large devices  */
 @media (min-width: 992px) and (max-width: 1199px) {
     header {
-        height: 150px;
-        background-color: #fff;
+        height: 100px;
     }
 
     .wrapper {
@@ -525,7 +523,6 @@ white {
         padding: 5px;
         margin-bottom: 30px;
     }
-
     .footer-column:not(:last-child) {
         border-bottom: 1px solid rgba(179, 240, 255, 0.5);
     }
