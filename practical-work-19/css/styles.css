@@ -144,7 +144,8 @@ header {
     width: 100%;
     text-align: center;
     box-sizing: border-box;
-    height: 500px;
+    /* Set maximum height based on the available space */
+    max-height: calc(100vh - 150px - 20px - 200px - 20px); /* Adjust the values accordingly */
 }
 
 .carousel {
@@ -176,7 +177,6 @@ header {
     cursor: pointer;
     font-size: 20px;
 }
-
 
 .prev-button {
     left: 20px;
@@ -272,7 +272,7 @@ header {
     margin: 0;
 }
 
-white {
+.white {
     font-size: 12px;
     color: white;
 }
@@ -392,7 +392,6 @@ white {
     .next-button {
         right: 10px;
     }
-
 
     .sub-container {
         width: calc(50% - 10px);
